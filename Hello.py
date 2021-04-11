@@ -14,4 +14,5 @@ print(pow(new_num, 2))
 print(str(new_num) + "high five")
 temp_cel = ((temp_fah - 32) * 5/9)
 print(temp_cel)
+print('**')
 
