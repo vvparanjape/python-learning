@@ -1,3 +1,4 @@
+# This program will convert Faremheit to Celcius
 from math import *
 temp_fah = input("Enter temperature in fahernheit: \n")
 print("You Entered " + str(temp_fah))
