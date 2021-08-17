@@ -1,0 +1,8 @@
+snmp-server contact {{ snmp.contact }}
+snmp-server location {{ snmp.location }}
+{{ % for ro_community in rnmp.RO % }}
+snmp-server community {{ ro_community }} RO
+{{ % end for % }}
+{{ % for rw_community in rnmp.RW % }}
+snmp-server community {{ rw_community }} RW
+{{ % end for % }}

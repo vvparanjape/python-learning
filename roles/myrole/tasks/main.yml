@@ -1,0 +1,10 @@
+---
+# tasks file for myrole
+- name: Start web server on remote machine
+  service:
+   name: nginx
+   state: started
+- name: Stop IPTABLES on remote machine 
+  service:
+   name: iptables
+   state: stopped

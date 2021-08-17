@@ -1,0 +1,5 @@
+---
+if_name: loopback0
+if_ipaddr: 10.10.11.1
+if_netmask: 255.255.255.255
+if_description: "Connecting Nowhere"

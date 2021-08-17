@@ -1,0 +1,11 @@
+---
+snmp:
+  contact: me@home
+  location: Home_DC
+  ro:
+    - OpentoAll
+    - OpentoMe
+  rw:
+    - Secret123
+  Trap: 192.168.1.199
+  Trap_secret: Secret123
