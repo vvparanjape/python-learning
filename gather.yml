@@ -1,0 +1,17 @@
+---
+
+- name: gather facts from remote hosts
+  hosts: webservers
+  become: yes
+  vars_files:
+   - /home/vish/ansible/variables/credentials.yml
+
+  tasks:
+  - name: print ansible_facts
+    debug:
+     var: ansible_facts['kernel']
+  - name: store facts in a file
+    copy:
+     content: "{{ ansible_facts }}"
+     dest: /tmp/web_fact.txt
+    delegate_to: localhost

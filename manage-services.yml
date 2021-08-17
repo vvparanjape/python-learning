@@ -1,0 +1,13 @@
+---
+- name: manage services on remote hosts
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: start nginx
+    service:
+     name: nginx
+     state: started
+  - name: stop iptables
+    service:
+     name: iptables
+     state: stopped

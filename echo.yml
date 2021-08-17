@@ -1,0 +1,11 @@
+---
+- name: sending variabls from external file
+  hosts: webservers
+  become: no
+  gather_facts: no 
+  vars_files:
+   - /home/vish/ansible/variables/credentials.yml
+   - /home/vish/ansible/variables/var_hosts 
+  tasks:
+   - name: send broadcast/echo 
+     command: wall "My name is {{myname}} and my sirname is {{mysirname}}"

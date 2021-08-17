@@ -1,0 +1,24 @@
+---
+ - name: Deploy SNMP configuration on remote hosts
+   hosts: webservers
+   gather_facts: no
+   connection: local
+   vars_files:
+   - /home/vish/ansible/variables/credentials.yml
+
+   tasks:
+    - name: send  SNMP commnads
+      ios_config:
+          commands:
+           - snmp-server community OpentoAll RO
+           - snmp-server community OpentoMe RO
+           - snmp-server community Secret123 RW
+           - snmp-server location Home_DC
+           - snmp-server contact me@home
+           - snmp-server host 192.168.1.199 Secret123 config
+           - snmp-server enable traps config 
+          username: "{{ cisco_user }}" 
+          password: "{{ cisco_pw }}"
+      register: commands_result
+    - debug:
+       var: commands_result.output 

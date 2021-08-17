@@ -1,0 +1,7 @@
+---
+- hosts: webservers
+  become: true
+  vars_files:
+   - /home/vish/ansible/variables/credentials.yml
+  roles:
+   - myrole

@@ -1,0 +1,16 @@
+---
+- name: configure network interface
+  hosts: routers
+  gather_facts: no
+  connection: local
+  vars_files:
+    - /root/variables/credentials.yml
+    - /root/variables/iplist.yml
+
+  tasks:
+   - name: confgure interface
+     ios_config:
+      src: "./{{ inventory_hostname }}.cfg"
+   - name: save configurations
+     ios_config:
+      save_when: modified

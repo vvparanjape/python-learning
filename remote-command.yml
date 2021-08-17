@@ -1,0 +1,20 @@
+---
+- name: sending command to remote host and capture output
+  hosts: webservers
+  become: yes
+  gather_facts: no 
+  vars_files:
+   - /home/vish/ansible/variables/credentials.yml
+   - /home/vish/ansible/variables/var_hosts 
+  tasks:
+   - name: check file system usage 
+     command: "df -h"
+     register: filesystem
+   - debug:
+       msg: '{{ filesystem.stdout  }}'
+
+   - name: save file system information as a file
+     copy:
+      content: "{{ filesystem.stdout }}"
+      dest: /tmp/{{ inventory_hostname }}_filesystem.txt
+     delegate_to: localhost

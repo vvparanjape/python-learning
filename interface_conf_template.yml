@@ -1,0 +1,15 @@
+---
+#This playbook will configure a loopback interface on a particular host - very premitive
+- name: configure network interface
+  hosts: test
+  gather_facts: no
+  connection: local
+  vars_files:
+    - /root/variables/credentials.yml
+    - /root/variables/iplist.yml
+
+  tasks:
+   - name: confgure interface
+     ios_config:
+      src: /root/ifconfig.j2
+      

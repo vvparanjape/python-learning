@@ -1,0 +1,9 @@
+---
+- name: Execute command on remote server and gather output
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: Collect hosts file entries
+    command: cat /etc/hosts
+    register: myhosts
+  - debug: msg="{{myhosts.stdout}}"

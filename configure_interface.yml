@@ -1,0 +1,19 @@
+---
+#This playbook will configure a loopback interface on a particular host - very premitive
+- name: configure network interface
+  hosts: test
+  gather_facts: no
+  connection: local
+  vars_files:
+    - /root/variables/credentials.yml
+    - /root/variables/iplist.yml
+
+  tasks:
+   - name: confgure interface
+     ios_config:
+      parents: "interface loopback1"
+      lines:
+       - description "loopback interface"
+       - ip address 10.10.11.1 255.255.255.255
+       - no shutdown
+   - debug:  "{{ inventory_hostname }}"
